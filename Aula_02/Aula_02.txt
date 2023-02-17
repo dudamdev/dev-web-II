@@ -1,0 +1,11 @@
+Passo 1: Criar o packege.json via código bash
+	npm init -y
+		--> json
+
+Passo 2: Instalar as dependências do nodeJS
+	npm i express nodemon --> sincroniza o serviço em tempo real
+
+Passo 3: Criar o arquivo principal index.json
+
+Pesquisar erro:
+    TypeError: Cannot destructure property 'nome' of 'req.body' as it is undefined.

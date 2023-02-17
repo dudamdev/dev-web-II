@@ -1,0 +1,26 @@
+node - framework baseado em JavaScript
+
+Passo 1: Criar o packege.json via código bash
+	npm init -y
+		--> json
+
+Passo 2: Instalar as dependências do nodeJS
+	npm i express nodemon --> sincroniza o serviço em tempo real
+
+Passo 3: Criar o arquivo principal index.json
+
+node index.js
+	usa o node pra fazer esse servidor rodar
+
+
+.gitignore
+	node_modules
+	
+javascript: tipagem fraca
+
+get = select
+post = insert
+
+git add -A
+git commit -m "Mensagem"
+git push
