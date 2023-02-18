@@ -1,3 +1,3 @@
-# :rolf: Olá Minha primeira API
+# Olá Minha primeira API
 
 Trabalhando com nodeJS e express
