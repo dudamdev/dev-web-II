@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora VueJS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+        integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/style.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20vh;
+            background-color: beige;
+        }
+
+
+        #app {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            width: 260px;
+            height: 440px;
+            background: darkslategray;
+            border-radius: 16px;
+            box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        div {
+            display: flex;
+
+        }
+
+        #display {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            padding-right: 20px;
+            padding-bottom: 8px;
+            width: 260px;
+            height: 48px;
+            background-color: cadetblue;
+            color: white;
+            /* font-weight: bold; */
+            text-align: right;
+            font-size: 2em;
+        }
+
+        #title {
+            font-size: 1.2em;
+        }
+
+        #equal {
+            background-color: cadetblue;
+            border-radius: 16px 0;
+
+        }
+
+        button {
+            width: 80px;
+            height: 72px;
+            background-color: darkslategrey;
+            color: white;
+            font-size: 1.5em;
+            border-radius: 16px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="app">
+            <div>
+                <span id="display">{{ display }}</span>
+            </div>
+            <div>
+                <button id="title">CALC</button>
+                <button @click="clear()" id="clear">C</button>
+                <button @click="clear()" id="clear">CE</button>
+                <button @click="addOperator('/')" id="div">/</button>
+            </div>
+            <div>
+                <button @click="setNumber(7)" id="num7">7</button>
+                <button @click="setNumber(8)" id="num8">8</button>
+                <button @click="setNumber(9)" id="num9">9</button>
+                <button @click="addOperator('x')" id="mult">X</button>
+            </div>
+            <div>
+                <button @click="setNumber(4)" id="num4">4</button>
+                <button @click="setNumber(5)" id="num5">5</button>
+                <button @click="setNumber(6)" id="num6">6</button>
+                <button @click="addOperator('-')" id="sub">-</button>
+            </div>
+            <div>
+                <button @click="setNumber(1)" id="num1">1</button>
+                <button @click="setNumber(2)" id="num2">2</button>
+                <button @click="setNumber(3)" id="num3">3</button>
+                <button @click="addOperator('+')" id="sum">+</button>
+            </div>
+            <div>
+                <button @click="setNumber(0)" id="num0">0</button>
+                <button @click="setNumber('00')" id="num00">00</button>
+                <button @click="setNumber('.')" id="dot">.</button>
+                <button @click="equal()" id="equal">=</button>
+            </div>
+
+        </div>
+    </main>
+</body>
+<script>
+    const { createApp } = Vue;
+    createApp({
+        data() {
+            return {
+                display: 0,
+                numOne: "",
+                operator: "",
+                numTwo: "",
+                result: "",
+                end: false
+            }
+        },
+        methods: {
+            setNumber(num) {
+                if (this.end === true) {
+                    this.clear();
+                }
+                if (this.operator === "") {
+                    if (num == "." && this.numOne.includes(".")) {
+                        num = "";
+                    }
+                    this.numOne += num;
+                } else {
+                    if (num == "." && this.numTwo.includes(".")) {
+                        num = "";
+                    }
+                    this.numTwo += num;
+                }
+                this.toDisplay();
+            },
+            addOperator(op) {
+                if (this.numOne != "" && this.end === false) {
+                    this.operator = ` ${op} `;
+                    this.toDisplay();
+                }
+            },
+            toDisplay() {
+                this.display = this.numOne + this.operator + this.numTwo;
+            },
+            clear() {
+                this.numOne = this.numTwo = this.operator = "";
+                this.display = 0;
+                this.end = false;
+            },
+            toInt(number) {
+                return number % 1 === 0 ? parseInt(number) : number;
+            },
+            equal() {
+                if (this.numTwo != "") {
+                    this.numOne = parseFloat(this.numOne);
+                    this.numTwo = parseFloat(this.numTwo);
+                    if (this.operator === " + ") {
+                        this.result = (this.numOne + this.numTwo).toFixed(2);
+                        this.result = this.toInt(this.result);
+                        this.display = this.result;
+                    } else if (this.operator === " - ") {
+                        this.result = (this.numOne - this.numTwo).toFixed(2);
+                        this.result = this.toInt(this.result);
+                        this.display = this.result;
+                    } else if (this.operator === " x ") {
+                        this.result = (this.numOne * this.numTwo).toFixed(2);
+                        this.result = this.toInt(this.result);
+                        this.display = this.result;
+                    } else {
+                        this.result = (this.numOne / this.numTwo).toFixed(2);
+                        this.result = this.toInt(this.result);
+                        this.display = this.result;
+                    }
+                    this.end = true;
+                }
+            }
+        }
+    }).mount("#app");
+</script>
+
+</html>
