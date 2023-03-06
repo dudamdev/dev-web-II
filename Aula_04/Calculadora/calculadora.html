@@ -23,7 +23,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 20vh;
+            margin-top: 16vh;
             background-color: beige;
         }
 
@@ -50,7 +50,7 @@
             flex-direction: column;
             justify-content: center;
             padding-right: 20px;
-            width: 260px;
+            width: 240px;
             height: 54px;
             background-color: cadetblue;
             color: white;
@@ -68,6 +68,10 @@
 
         }
 
+        #equal:hover {
+            background-color: rgb(70, 142, 142);
+        }
+
         button {
             width: 80px;
             height: 72px;
@@ -77,13 +81,21 @@
             border-radius: 16px;
             border: none;
         }
+
+        button:hover {
+            background-color: rgba(95, 158, 160, 0.24);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 
 <body>
     <main>
         <div id="app">
-            <div>
+            <div id="display-cont">
                 <span id="display">{{ display }}</span>
             </div>
             <div>
