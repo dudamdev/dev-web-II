@@ -184,23 +184,9 @@
                 if (this.numTwo != "") {
                     this.numOne = parseFloat(this.numOne);
                     this.numTwo = parseFloat(this.numTwo);
-                    if (this.operator === " + ") {
-                        this.result = (this.numOne + this.numTwo).toFixed(2);
-                        this.result = this.toInt(this.result);
-                        this.display = this.result;
-                    } else if (this.operator === " - ") {
-                        this.result = (this.numOne - this.numTwo).toFixed(2);
-                        this.result = this.toInt(this.result);
-                        this.display = this.result;
-                    } else if (this.operator === " x ") {
-                        this.result = (this.numOne * this.numTwo).toFixed(2);
-                        this.result = this.toInt(this.result);
-                        this.display = this.result;
-                    } else {
-                        this.result = (this.numOne / this.numTwo).toFixed(2);
-                        this.result = this.toInt(this.result);
-                        this.display = this.result;
-                    }
+                    this.result = eval(this.numOne + this.operator.replace("x", "*") + this.numTwo).toFixed(2);
+                    this.result = this.toInt(this.result);
+                    this.display = this.result;
                     this.end = true;
                 }
             }
