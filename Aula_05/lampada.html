@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Lampada</title>
+    <style>
+        img {
+            width: 40vw;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <img @click="toggleLamp" v-if="isLampActive" src="On.png" alt="Lampada Ligada">
+        <img @click="toggleLamp" v-else="isLampActive" src="Off.png" alt="Lampada Desligada">
+    </div>
+</body>
+<script src="lampada.js"></script>
+
+</html>

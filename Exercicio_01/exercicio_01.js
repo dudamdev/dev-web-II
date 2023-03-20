@@ -11,7 +11,7 @@ createApp({
     },
     methods: {
         showAlert: function () {
-            alert("You Rock!🤘")
+            alert("You Rock! 🤘")
         },
 
         toggleMostrar: function () {
