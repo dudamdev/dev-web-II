@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<script src="https://unpkg.com/vue@3.2.30/dist/vue.global.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<title>Exercicio 01</title>
+</head>
+
+<body id="app">
+    <h1>Exercício</h1>
+    <!-- Criar um alerta:
+Crie um botão que, ao ser clicado, exibe um alerta com uma mensagem. Use a diretiva v-on:click para fazer a ação acontecer.-->
+    <h2>Alerta com VUE</h2>
+    <div>
+        <button @click="showAlert">Clique Aqui!</button>
+    </div>
+    <hr />
+    <!-- Crie uma imagem usando o Vue. Use a sintaxe <img v-bind:src="url"> e defina a variável url no Vue. -->
+    <h2>Imagem com VUE</h2>
+    <div>
+        <img v-bind:src="url" alt="Imagem" style="width: 400px; height: auto" />
+    </div>
+    <hr />
+    <h1>Desafios</h1>
+    <!-- Adicione uma classe CSS a um elemento usando o Vue. Use a sintaxe <div v-bind:class="nomeDaClasse">Elemento com classe</div> e defina a variável nomeDaClasse no Vue.-->
+    <h2>Classe CSS</h2>
+    <div v-bind:class="classeCSS">You Rock!</div>
+    <hr />
+    <!-- Mostre ou esconda um elemento usando o Vue. Use a sintaxe <div v-if="mostrar">Elemento a ser mostrado/ocultado</div> e defina a variável mostrar no Vue -->
+    <h2>Mostre ou esconda</h2>
+    <div v-if="mostrar">
+        <p><span v-bind:class="classeCSS">You Rock</span> and you know it! 🤘</p>
+    </div>
+    <button @click="toggleMostrar">{{ isMostrar ? 'Esconder' : 'Mostrar' }}</button>
+    <script src="exercicio_01.js"></script>
+</body>
+
+</html>
