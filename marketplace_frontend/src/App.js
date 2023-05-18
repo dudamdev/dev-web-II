@@ -2,6 +2,9 @@ import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import Home from "./scenes/Home";
+import Login from "./scenes/Login";
+import SignUp from "./scenes/SignUp";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -10,11 +13,14 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          <main className="content" style={{ display: "flex" }}>
+          <main className="content">
             <Router>
               <Routes>
-                <Route path="/" element={<Layout />} />
-                {/* Add more routes here */}
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  <Route path="login" element={<Login />} />
+                  <Route path="signup" element={<SignUp />} />
+                </Route>
               </Routes>
             </Router>
           </main>

@@ -1,12 +1,9 @@
 import { IconButton, useTheme, Typography } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../theme";
-import fanImage from "./fan-drive.gif";
+import { Link } from "react-router-dom";
+import fanImage from "../../src/images/fanImage.gif";
 import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import Checkbox from '@mui/material/Checkbox';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -15,48 +12,6 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
-
-function CheckboxesTags() {
-    return (
-        <Autocomplete
-            multiple
-            id="checkboxes-tags-demo"
-            options={fanCategory}
-            disableCloseOnSelect
-            getOptionLabel={(option) => option.title}
-            renderOption={(props, option, { selected }) => (
-                <li {...props}>
-                    <Checkbox
-                        icon={icon}
-                        checkedIcon={checkedIcon}
-                        style={{ marginRight: 8 }}
-                        checked={selected}
-                    />
-                    {option.title}
-                </li>
-            )}
-            style={{ width: "15vw" }}
-            renderInput={(params) => (
-                <TextField {...params} label="Filtre por Categorias" placeholder="Categorias" variant="outlined" />
-            )}
-
-        />
-    );
-}
-
-const fanCategory = [
-    { title: 'Ventilador de Teto' },
-    { title: 'Ventilador de Parede' },
-    { title: 'Ventilador de Coluna' },
-    { title: 'Ventilador de Mesa' },
-    { title: 'Ventilador de Repelente' },
-    { title: 'Ventilador de 2 em 1' },
-    { title: 'Acessórios' },
-
-]
 
 const Header = () => {
     const theme = useTheme();
@@ -74,8 +29,10 @@ const Header = () => {
                 style={{
 
                     display: "flex",
+                    alignItems: "stretch",
                     justifyContent: "space-around",
                     padding: "8px 0 4px 0",
+                    borderBottom: `1px solid ${colors.blueAccent[550]}`
                 }}
             >
 
@@ -104,23 +61,27 @@ const Header = () => {
                     </IconButton>
                 </div>
             </div>
-            <div style={{
-                width: "100vw",
-                height: "1px",
-                backgroundColor: colors.primary[400],
-            }} />
 
             <div
                 className="row"
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "space-around",
+                    justifyContent: "space-between",
+
                     padding: "0 60px",
                     marginTop: "16px"
                 }}
             >
-                <img src={fanImage} alt="Logo Vento Fresco" width="140" />
+
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center"
+                }}>
+                    <Link to="/"><img src={fanImage} alt="Logo Vento Fresco" width="140" /></Link>
+
+                </div>
                 <TextField
                     sx={{
                         width: "15vw",
@@ -128,7 +89,7 @@ const Header = () => {
                         borderRadius: "8px"
                     }}
                     label="Informe seu CEP"
-                    InputProps={{ type: 'search' }}
+                    type="number"
                     variant="outlined"
                 />
                 <div style={{
@@ -148,23 +109,25 @@ const Header = () => {
                         <SearchOutlinedIcon fontSize="large" />
                     </IconButton>
                 </div>
-                <div style={{
-                    cursor: "pointer",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    columnGap: "8px",
-                    padding: "10px 16px",
-                    borderRadius: "8px",
-                    backgroundColor: colors.primary[400],
-                }}>
-                    <PersonOutlinedIcon fontSize="large" />
+                <Link to="/login">
                     <div style={{
-                        textAlign: "center"
+                        cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        columnGap: "8px",
+                        padding: "10px 16px",
+                        borderRadius: "8px",
+                        backgroundColor: colors.primary[400],
                     }}>
-                        <Typography variant="h5">Entre ou cadastre-se</Typography>
-                        <Typography variant="body1">para ver seus pedidos</Typography>
+                        <PersonOutlinedIcon fontSize="large" />
+                        <div style={{
+                            textAlign: "center"
+                        }}>
+                            <Typography variant="h5">Entre ou cadastre-se</Typography>
+                            <Typography variant="body1">para ver seus pedidos</Typography>
+                        </div>
                     </div>
-                </div>
+                </Link>
                 <IconButton>
                     <FavoriteOutlinedIcon fontSize="large" />
                 </IconButton>
@@ -172,31 +135,6 @@ const Header = () => {
                     <ShoppingCartOutlinedIcon fontSize="large" />
                 </IconButton>
             </div>
-
-            <div
-                className="row"
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    columnGap: "4vw",
-                    padding: "0 20px",
-                    marginBottom: "24px"
-                }}
-            >
-                <CheckboxesTags />
-                <Typography variant="h5" style={{ textTransform: "uppercase", cursor: "pointer" }}>Produtos</Typography>
-                <Typography variant="h5" style={{ textTransform: "uppercase", cursor: "pointer" }}>Acessórios</Typography>
-                <Typography variant="h5" style={{ textTransform: "uppercase", cursor: "pointer" }}>Promoções</Typography>
-                <Typography variant="h5" style={{ textTransform: "uppercase", cursor: "pointer" }}>Baixe o app</Typography>
-                <Typography variant="h5" style={{ textTransform: "uppercase", cursor: "pointer" }}>Sobre Nós</Typography>
-            </div>
-            <div style={{
-                width: "100vw",
-                height: "4px",
-                backgroundColor: colors.blueAccent[550],
-            }} />
-
         </div>
 
     )
