@@ -49,13 +49,13 @@ const Login = () => {
                     cursor: "pointer"
                 }}>Esqueci minha senha</Typography>
                 <button type="submit" style={{
-                    backgroundColor: colors.blueAccent[550],
-                    color: colors.primary[50],
+                    backgroundColor: colors.blueAccent[200],
+                    color: colors.primary[500],
                     padding: "8px 0",
                     borderRadius: "8px",
                     marginTop: "8px",
                     cursor: "pointer"
-                }}><Typography variant="button">Entrar</Typography></button>
+                }}><Typography variant="button" style={{ fontWeight: "600", fontSize: "1em" }}>Entrar</Typography></button>
             </form>
 
             <div style={{
@@ -66,7 +66,7 @@ const Login = () => {
                 <Typography variant="subtitle2">Não tem uma conta?</Typography>
                 <Link to="/signup">
                     <Typography variant="button" style={{
-                        color: colors.blueAccent[550],
+                        color: colors.blueAccent[200],
                         fontWeight: "700",
                         fontSize: "1em",
                         cursor: "pointer"

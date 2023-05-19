@@ -81,7 +81,7 @@ function ProductCards() {
                         marginTop: "8px",
                         cursor: "pointer"
                     }}>
-                        <Typography variant="button">Comprar</Typography>
+                        <Typography variant="button" style={{ fontWeight: "600", fontSize: "1em" }}>Comprar</Typography>
                     </Link>
                 </div>
             );

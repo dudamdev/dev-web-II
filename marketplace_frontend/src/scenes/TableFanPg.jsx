@@ -175,23 +175,6 @@ const TableFanPg = () => {
                                 <Typography variant="button" style={{ fontWeight: "600", fontSize: "1em" }}>Comprar agora</Typography>
                             </button>
                             <Favorite />
-                            {/* <button style={{
-                                width: "8vw",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                columnGap: "8px",
-                                border: `2px solid ${colors.blueAccent[200]}`,
-                                backgroundColor: colors.primary[500],
-                                color: colors.blueAccent[200],
-                                padding: "16px 0",
-                                borderRadius: "8px",
-                                marginTop: "8px",
-                                cursor: "pointer"
-                            }}>
-                                <FavoriteBorderOutlinedIcon />
-                                <Typography variant="button" style={{ fontWeight: "600", fontSize: "1em" }}>favoritar</Typography>
-                            </button> */}
                         </div>
                         <Typography variant="body2">Calcule o frete e o prazo de entrega:</Typography>
                         <div style={{
