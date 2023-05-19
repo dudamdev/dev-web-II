@@ -37,6 +37,7 @@ export default {
                 senha: this.senha
             }
             console.log(data);
+            this.message = "Deu certo"
         }
     }
 }
