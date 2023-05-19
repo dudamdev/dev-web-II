@@ -5,6 +5,12 @@ import Layout from "./components/Layout";
 import Home from "./scenes/Home";
 import Login from "./scenes/Login";
 import SignUp from "./scenes/SignUp";
+import TableFanPg from "./scenes/TableFanPg";
+import WallFanPg from "./scenes/WallFanPg";
+import CeilingFanPg from "./scenes/CeilingFanPg";
+import ColumnFanPg from "./scenes/ColumnFanPg";
+import BugFanPg from "./scenes/BugFanPg";
+import BiFanPg from "./scenes/BiFanPg";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -20,6 +26,12 @@ function App() {
                   <Route index element={<Home />} />
                   <Route path="login" element={<Login />} />
                   <Route path="signup" element={<SignUp />} />
+                  <Route path="tablefanpg" element={<TableFanPg />} />
+                  <Route path="wallfanpg" element={<WallFanPg />} />
+                  <Route path="ceilingfanpg" element={<CeilingFanPg />} />
+                  <Route path="columnfanpg" element={<ColumnFanPg />} />
+                  <Route path="bugfanpg" element={<BugFanPg />} />
+                  <Route path="bifanpg" element={<BiFanPg />} />
                 </Route>
               </Routes>
             </Router>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../theme";
+import { Link } from "react-router-dom";
 import fan01 from "../../src/images/fan01.png";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
@@ -70,18 +71,18 @@ function ProductCards() {
                         <Typography variant="h4">R$ 299,99</Typography>
                         <Typography variant="body1">à vista</Typography>
                     </div>
-                    <button
-                        style={{
-                            backgroundColor: colors.primary[500],
-                            color: colors.primary[50],
-                            padding: "8px 0",
-                            borderRadius: "8px",
-                            marginTop: "8px",
-                            cursor: "pointer"
-                        }}
-                    >
+                    <Link to="tablefanpg" target='_blank' style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        backgroundColor: colors.primary[500],
+                        color: colors.primary[50],
+                        padding: "8px 0",
+                        borderRadius: "8px",
+                        marginTop: "8px",
+                        cursor: "pointer"
+                    }}>
                         <Typography variant="button">Comprar</Typography>
-                    </button>
+                    </Link>
                 </div>
             );
         }
