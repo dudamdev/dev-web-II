@@ -29,3 +29,41 @@ app.post("/api/registerUser", async (req, res) => {
         register.release();
     }
 });
+
+app.get("/api/getUsers", async (req, res) => {
+    try {
+        register = await pool.connect();
+        const data = await register.query("SELECT * FROM Users");
+        res.status(200).send(data.rows)
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Não conectou ao servidor");
+    }
+});
+
+app.put("/api/updateUser/:id", async (req, res) => {
+    try {
+        register = await pool.connect();
+        const { id } = req.params;
+        const { nome, email, senha } = req.body
+        await register.query(`UPDATE Users SET nome = '${nome}', email = '${email}', senha = '${senha}' WHERE id = '${id}'`)
+        res.status(200).send("Usuário atualizado com sucesso")
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Não conectou ao servidor");
+    }
+});
+
+app.delete("/api/deleteUser/:id", async (req, res) => {
+    try {
+        register = await pool.connect();
+        const { id } = req.params;
+        await register.query(`DELETE FROM Users WHERE id = '${id}'`)
+        res.status(200).send("Usuário deletado com sucesso")
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Não conectou ao servidor");
+    }
+})

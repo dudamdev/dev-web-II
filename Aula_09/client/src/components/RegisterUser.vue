@@ -34,6 +34,9 @@ export default {
             })
                 .then(async (res) => {
                     this.message = await res.text();
+                    this.nome = ""
+                    this.email = ""
+                    this.senha = ""
                 })
                 .catch(async (err) => {
                     this.message = await err.text();
