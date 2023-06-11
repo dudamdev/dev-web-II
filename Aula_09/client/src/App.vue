@@ -1,13 +1,13 @@
 <script setup>
-import RegisterUser from './components/RegisterUser.vue';
-import GetUsers from './components/GetUsers.vue';
+import crudUsers from './components/crudUsers.vue';
 
 
 </script>
 
 <template>
-  <RegisterUser></RegisterUser>
-  <GetUsers />
+    <div>
+        <crudUsers />
+    </div>
 </template>
 
 <style scoped></style>
